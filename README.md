@@ -50,10 +50,12 @@ This project implements a **secure, highly available AWS network architecture** 
 ### 1. VPC Creation
 ```bash
 # VPC: 10.0.0.0/16
-# Public subnets: 10.0.1.0/24, 10.0.2.0/24
-# Private subnets: 10.0.3.0/24, 10.0.4.0/24
+# Public subnets: 10.0.0.0/20, 10.0.16.0/20 (EC2 in 10.0.16.0/20)
+# Private subnets: 10.0.128.0/20, 10.0.144.0/20
 
 ### Database Security Layer
-- Created dedicated security group `finance-db-sg`
+- Created dedicated security group `finance-db-sg.`
 - Configured to accept MySQL connections ONLY from EC2 security group
 - Implemented security group chaining for zero-trust architecture
+**Why this matters: Security group chaining ensures only EC2 instances with the app server 
+security group can access the database, even if IP addresses change. So it is more secure, with no IP address management, and it is also scalable (Servers with the same security group will automatically connect or have access to the database in the private subnet.
