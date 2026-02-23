@@ -52,3 +52,8 @@ This project implements a **secure, highly available AWS network architecture** 
 # VPC: 10.0.0.0/16
 # Public subnets: 10.0.1.0/24, 10.0.2.0/24
 # Private subnets: 10.0.3.0/24, 10.0.4.0/24
+
+### Database Security Layer
+- Created dedicated security group `finance-db-sg`
+- Configured to accept MySQL connections ONLY from EC2 security group
+- Implemented security group chaining for zero-trust architecture
